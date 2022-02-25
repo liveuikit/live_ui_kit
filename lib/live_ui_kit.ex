@@ -1,18 +1,88 @@
 defmodule LiveUiKit do
-  @moduledoc """
-  Documentation for `LiveUiKit`.
-  """
+  @moduledoc File.read!("README.md") |> String.split("<!-- MDOC !-->") |> Enum.fetch!(1)
 
-  @doc """
-  Hello world.
 
-  ## Examples
+  defmacro __using__(_opts) do
+    quote do
+      alias LiveUiKit.UI
 
-      iex> LiveUiKit.hello()
-      :world
+      import UI.Accordion
+      import UI.Alert
+      import UI.Avatar
+      import UI.Badge
+      import UI.Button
+      import UI.Card
+      import UI.Collapse
+      import UI.Dropdown
+      import UI.Modal
+      import UI.Rating
+      import UI.Table
+      import UI.Tabs
+      import UI.Toast
+    end
+  end
 
-  """
-  def hello do
-    :world
+  import Phoenix.LiveView, only: [assign: 3, assign_new: 3]
+  import Phoenix.LiveView.Helpers, only: [assigns_to_attributes: 2]
+
+  @doc false
+  def config(assigns, opts \\ []) do
+    assigns
+    |> maybe_assign_dom_id()
+    |> (&require_props(&1, Keyword.get(opts, :required_props, []))).()
+    |> (&default_props(&1, Keyword.get(opts, :default_props, []))).()
+    |> (&get_extra_attrs(&1, Keyword.get(opts, :reserved_attrs, []))).()
+    |> (&default_class(&1, Keyword.get(opts, :component, nil))).()
+    |> maybe_assign_extended_class()
+  end
+
+  defp maybe_assign_dom_id(assigns) do
+    assigns
+    |> assign_new(:id, fn -> "dom#{System.unique_integer()}" end)
+  end
+
+  defp require_props(assigns, _props) do
+    assigns
+  end
+
+  defp default_props(assigns, []), do: assigns
+  defp default_props(assigns, [_|_] = props) do
+    Enum.reduce(props, assigns, fn ({prop, default}, acc) ->
+      acc |> assign_new(prop, fn -> default end)
+    end)
+  end
+
+  defp default_class(assigns, nil), do: assigns
+  defp default_class(assigns, component) do
+    base_class = get_in(base_css(), [component, "base"])
+    variant = Map.get(assigns, :variant, "")
+    variant_class = get_in(base_css(), [component, variant])
+
+    assigns
+    |> assign_new(:class, fn ->
+      String.trim("#{base_class} #{variant_class}")
+    end)
+  end
+
+  defp maybe_assign_extended_class(assigns) do
+    case Map.get(assigns, :extended_class) do
+      nil ->
+        assigns
+      "" <> extended_class ->
+        class = "#{Map.get(assigns, :class)} #{extended_class}" |> String.trim()
+
+        assigns
+        |> assign(:class, class)
+    end
+  end
+
+  defp get_extra_attrs(assigns, reserved_attrs) when is_list(reserved_attrs) do
+    extra = assigns_to_attributes(assigns, ([:id, :class] ++ reserved_attrs))
+    assign(assigns, :extra_attrs, extra)
+  end
+
+  defp base_css() do
+    # YamlElixir.read_from_file!("test.yml")
+    LiveUiKit.Theme.Tailwind.theme()
   end
 end
