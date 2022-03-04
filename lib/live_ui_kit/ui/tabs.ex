@@ -1,7 +1,8 @@
 defmodule LiveUiKit.UI.Tabs do
   use LiveUiKit.UI
+  @moduledoc false
 
-  def accordion(assigns) do
+  def tabs(assigns) do
     ~H"""
     <div>
     </div>

@@ -1,0 +1,7 @@
+defmodule <%= @module_name %>Web.LiveUiKitConfig do
+  @behaviour LiveUiKit.Override
+
+  def theme do
+    <%= inspect @theme_map %>
+  end
+end

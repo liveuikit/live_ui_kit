@@ -1,6 +1,8 @@
 defmodule LiveUiKit do
   @moduledoc File.read!("README.md") |> String.split("<!-- MDOC !-->") |> Enum.fetch!(1)
 
+  @before_compile LiveUiKit.ClassLoader
+  @themes [:tailwind, :bootstrap, :daisyui]
 
   defmacro __using__(_opts) do
     quote do
@@ -15,7 +17,6 @@ defmodule LiveUiKit do
       import UI.Collapse
       import UI.Dropdown
       import UI.Modal
-      import UI.Rating
       import UI.Table
       import UI.Tabs
       import UI.Toast
@@ -82,7 +83,17 @@ defmodule LiveUiKit do
   end
 
   defp base_css() do
-    # YamlElixir.read_from_file!("test.yml")
-    LiveUiKit.Theme.Tailwind.theme()
+    # CHECK FOR OVERRIDE LAST
+    # THEN MERGE THE MAPS
+    theme = get_base_css_from_teme(Application.get_env(:live_ui_kit, :theme))
+
+    theme
   end
+
+  @doc false
+  def get_base_css_from_teme("bootstrap"), do: bootstrap()
+  def get_base_css_from_teme(:bootstrap), do: bootstrap()
+  def get_base_css_from_teme("daisyui"), do: daisyui()
+  def get_base_css_from_teme(:daisyui), do: daisyui()
+  def get_base_css_from_teme(_), do: tailwind()
 end

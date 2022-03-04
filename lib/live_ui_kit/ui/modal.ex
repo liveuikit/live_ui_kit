@@ -7,26 +7,46 @@ defmodule LiveUiKit.UI.Modal do
   @doc ~S'''
   Modal component:
 
-
   ## Examples
 
-      <.badge>
-        Default alert
-      </.badge>
+      <button type="button" phx-click={UI.Modal.open("#modal")} >
+        Open modal
+      </button>
 
-      <.badge variant="success">
-        Success badge
-      </.badge>
+      <.modal id="modal" title="Awesome modal">
+        This is the modal body
+      </.modal>
 
-      <.badge variant="warning">
-        Warning!!
-      </.badge>
+  ## Building a modal from scratch:
 
+      <div class={@class} id={@id} role="dialog" data-init-modal={open_modal()} phx-remove={close_modal()} style="display: none">
+        <.modal_backdrop visible={@backdrop} />
+        <.modal_dialog>
+          <.modal_content>
+            <.modal_header>
+              <.modal_title>
+                <%= if assigns[:modal_title], do: render_slot(@modal_title), else: @title %>
+              </.modal_title>
+              <%= if @return_to do %>
+                <%= live_patch raw("&times;"), to: @return_to, phx_click: close_modal(), id: "close", class: "" %>
+              <% else %>
+                <button type="button" id="close" phx-click={close_modal()}>&times;</button>
+              <% end %>
+            </.modal_header>
+            <.modal_body>
+              <%= render_slot(@inner_block, assigns) %>
+            </.modal_body>
+          </.modal_content>
+        </.modal_dialog>
+      </div>
 
   ## Options
 
-    * `variant` - The variant of the badge Possible options are 'info', 'success',
-      'warning' and 'error'. Default is 'primary'.
+    * `return_to` - Add an option path to redirect to when modal close.
+    * `header` - Passing in a header text will act as a <.card_header>
+    * `visible` - If the modal should be visible from start
+    * `backdrop` - If a backdrop should be visible
+    * `title` - Passing in a header text will act as a <.modal_title>
     * `extended_class` - The class or classes that will be appended to the default class attribute.
 
     All further assigns will be passed to the alert tag.
@@ -36,7 +56,6 @@ defmodule LiveUiKit.UI.Modal do
       component: "modal",
       default_props: [
         return_to: nil,
-        header: false,
         visible: false,
         backdrop: true,
         title: nil,
@@ -77,6 +96,15 @@ defmodule LiveUiKit.UI.Modal do
     """
   end
 
+  @doc ~S'''
+  Modal dialog component.
+
+  ## Options
+
+    * `extended_class` - The class or classes that will be appended to the default class attribute.
+
+  All further assigns will be passed to the modal dialog tag.
+  '''
   def modal_dialog(assigns) do
     assigns = config(assigns, component: "modal_dialog")
 
@@ -87,6 +115,15 @@ defmodule LiveUiKit.UI.Modal do
     """
   end
 
+  @doc ~S'''
+  Modal backdrop component.
+
+  ## Options
+
+    * `extended_class` - The class or classes that will be appended to the default class attribute.
+
+  All further assigns will be passed to the modal backdrop tag.
+  '''
   def modal_backdrop(assigns) do
     assigns = config(assigns, component: "modal_backdrop")
 
@@ -99,6 +136,15 @@ defmodule LiveUiKit.UI.Modal do
     """
   end
 
+  @doc ~S'''
+  Modal content component.
+
+  ## Options
+
+    * `extended_class` - The class or classes that will be appended to the default class attribute.
+
+  All further assigns will be passed to the modal content tag.
+  '''
   def modal_content(assigns) do
     assigns = config(assigns, component: "modal_content")
 
@@ -109,6 +155,15 @@ defmodule LiveUiKit.UI.Modal do
     """
   end
 
+  @doc ~S'''
+  Modal header component.
+
+  ## Options
+
+    * `extended_class` - The class or classes that will be appended to the default class attribute.
+
+  All further assigns will be passed to the modal header tag.
+  '''
   def modal_header(assigns) do
     assigns = config(assigns, component: "modal_header")
 
@@ -119,6 +174,15 @@ defmodule LiveUiKit.UI.Modal do
     """
   end
 
+  @doc ~S'''
+  Modal title component.
+
+  ## Options
+
+    * `extended_class` - The class or classes that will be appended to the default class attribute.
+
+  All further assigns will be passed to the modal title tag.
+  '''
   def modal_title(assigns) do
     assigns = config(assigns, component: "modal_title")
 
@@ -129,6 +193,15 @@ defmodule LiveUiKit.UI.Modal do
     """
   end
 
+  @doc ~S'''
+  Modal body component.
+
+  ## Options
+
+    * `extended_class` - The class or classes that will be appended to the default class attribute.
+
+  All further assigns will be passed to the modal body tag.
+  '''
   def modal_body(assigns) do
     assigns = config(assigns, component: "modal_body")
 

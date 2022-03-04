@@ -1,7 +1,8 @@
 defmodule LiveUiKit.UI.Avatar do
   use LiveUiKit.UI
+  @moduledoc false
 
-  def accordion(assigns) do
+  def avatar(assigns) do
     ~H"""
     <div>
     </div>

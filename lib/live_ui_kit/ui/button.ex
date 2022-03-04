@@ -1,7 +1,8 @@
 defmodule LiveUiKit.UI.Button do
   use LiveUiKit.UI
+  @moduledoc false
 
-  def accordion(assigns) do
+  def button(assigns) do
     ~H"""
     <div>
     </div>

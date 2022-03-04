@@ -1,7 +1,8 @@
 defmodule LiveUiKit.UI.Toast do
   use LiveUiKit.UI
+  @moduledoc false
 
-  def accordion(assigns) do
+  def toast(assigns) do
     ~H"""
     <div>
     </div>
