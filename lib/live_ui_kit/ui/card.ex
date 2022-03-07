@@ -9,7 +9,7 @@ defmodule LiveUiKit.UI.Card do
 
   ## Examples
 
-     <.card>
+      <.card>
         <.card_body>
           Basic card with body
         </.card_body>

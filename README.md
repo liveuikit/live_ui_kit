@@ -21,6 +21,13 @@ def deps do
   ]
 end
 ```
+Pick one of the available themes. `:tailwind`, `:daisyui` or `:bootstrap`
+
+```elixir
+config :live_ui_kit,
+  theme: :tailwind,
+  otp_app: :my_app
+```
 
 Include the library in one of two ways. Either in a specific LiveView file:
 
@@ -55,5 +62,18 @@ defmodule ExampleAppWeb do
   end
 end
 ```
+If you use Tailwind and use the purge option, add this line in the tailwind.config.js:
 
-
+```js
+module.exports = {
+  mode: 'jit',
+  purge: [
+    './js/**/*.js',
+    '../lib/*_web/**/*.*ex',
+    '../deps/live_ui_kit/**/*.yml' // Add this
+  ],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+}
+```

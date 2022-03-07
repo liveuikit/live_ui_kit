@@ -1,14 +1,46 @@
+alert:
+  base: "alert shadow-lg"
+  info: "alert-info"
+  success: "alert-success"
+  warning: "alert-warning"
+  error: "alert-error"
+
+badge:
+  base: "badge"
+  primary: "badge-primary"
+  secondary: "badge-secondary"
+  info: "badge-info"
+  success: "badge-success"
+  warning: "badge-warning"
+  error: "badge-error"
+
+button:
+  base:
+  primary:
+  secondary:
+  info:
+  success:
+  warning:
+  error:
+  link:
+
+card:
+  base: "card bg-base-100 shadow-xl"
+
+card_body:
+  base: "card-body"
+
 card_header:
-  base: "py-3 px-6 border-b border-gray-300"
+  base: "card-header"
 
 card_title:
-  base: "text-gray-900 text-xl leading-tight font-medium mb-2"
+  base: "card-title"
 
 card_subtitle:
   base: ""
 
 card_footer:
-  base: "py-3 px-6 border-t border-gray-300 text-gray-600"
+  base: ""
 
 card_link:
   base:

@@ -57,7 +57,8 @@ defmodule LiveUiKit do
   defp default_class(assigns, component) do
     base_class = get_in(base_css(), [component, "base"])
     variant = Map.get(assigns, :variant, "")
-    variant_class = get_in(base_css(), [component, variant])
+    variant_class =
+      get_in(base_css(), [component, variant]) || get_in(base_css(), [component, "variant", variant])
 
     assigns
     |> assign_new(:class, fn ->
