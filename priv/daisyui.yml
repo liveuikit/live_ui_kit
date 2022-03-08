@@ -15,17 +15,17 @@ badge:
   error: "badge-error"
 
 button:
-  base:
-  primary:
-  secondary:
-  info:
-  success:
-  warning:
-  error:
-  link:
+  base: "btn"
+  primary: "btn-primary"
+  secondary: "btn-secondary"
+  info: "btn-info"
+  success: "btn-success"
+  warning: "btn-warning"
+  error: "btn-error"
+  link: "btn-link"
 
 card:
-  base: "card bg-base-100 shadow-xl"
+  base: "card bg-base-200 shadow-xl border-base-300 border-opacity-50"
 
 card_body:
   base: "card-body"
@@ -46,19 +46,24 @@ card_link:
   base:
 
 collapse:
-  base: "overflow-hidden max-h-0 duration-500 transition-all"
+  base: "overflow-hidden h-0 duration-500 transition-all"
+  collapsing: "collapsing"
+  open: "collapse show"
 
 dropdown:
   base: "relative inline-block text-left"
+
 dropdown_toggle:
   base: "flex items-center"
+
 dropdown_menu:
   base: "border shadow-xl menu bg-base-100 border-base-200 rounded-box w-52"
+
 dropdown_item:
   base:
+
 dropdown_divider:
   base:
-
 
 modal:
   base: "fixed top-0 left-0 z-50 w-full h-screen outline-none"

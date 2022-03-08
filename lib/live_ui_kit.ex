@@ -37,6 +37,10 @@ defmodule LiveUiKit do
     |> maybe_assign_extended_class()
   end
 
+  @doc false
+  def elm_id("#" <> id), do: "##{id}"
+  def elm_id("" <> id), do: "##{id}"
+
   defp maybe_assign_dom_id(assigns) do
     assigns
     |> assign_new(:id, fn -> "dom#{System.unique_integer()}" end)

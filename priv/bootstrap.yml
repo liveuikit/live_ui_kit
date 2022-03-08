@@ -49,18 +49,23 @@ card_link:
 
 collapse:
   base: "collapse"
+  collapsing: "collapsing"
+  open: "collapse show"
 
 dropdown:
   base: "relative inline-block text-left"
+
 dropdown_toggle:
   base: "flex items-center"
+
 dropdown_menu:
   base: "border shadow-xl menu bg-base-100 border-base-200 rounded-box w-52"
+
 dropdown_item:
   base:
+
 dropdown_divider:
   base:
-
 
 modal:
   base: "fixed top-0 left-0 z-50 w-full h-screen outline-none"
