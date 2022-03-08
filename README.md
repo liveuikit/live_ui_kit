@@ -17,7 +17,7 @@ by adding `live_ui_kit` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:live_ui_kit, "~> 0.1.0"}
+    {:live_ui_kit, "~> 0.1.4"}
   ]
 end
 ```
@@ -67,7 +67,7 @@ If you use Tailwind and use the purge option, add this line in the tailwind.conf
 ```js
 module.exports = {
   mode: 'jit',
-  purge: [
+  content: [
     './js/**/*.js',
     '../lib/*_web/**/*.*ex',
     '../deps/live_ui_kit/**/*.yml' // Add this
@@ -77,3 +77,62 @@ module.exports = {
   ],
 }
 ```
+
+Add the optional animation classes to the css file:
+
+```css
+/* animations */
+.modal-content-in {
+  animation: 0.2s ease-in 0s normal forwards 1 modal-content-in-keys;
+}
+
+.modal-content-out {
+  animation: 0.2s ease-out 0s normal forwards 1 modal-content-out-keys;
+}
+
+.fade-in-scale {
+  animation: 0.2s ease-in 0s normal forwards 1 fade-in-scale-keys;
+}
+
+.fade-out-scale {
+  animation: 0.2s ease-out 0s normal forwards 1 fade-out-scale-keys;
+}
+
+.fade-in {
+  animation: 0.2s ease-in 0s normal forwards 1 fade-in-keys;
+}
+.fade-out {
+  animation: 0.2s ease-out 0s normal forwards 1 fade-out-keys;
+}
+
+@keyframes modal-content-in-keys{
+  0% { opacity: 0; margin-top: 0.6rem; }
+  100% { opacity: 1; margin-top: 2rem; }
+}
+
+@keyframes modal-content-out-keys{
+  0% { opacity: 1; margin-top: 2rem; }
+  100% { opacity: 0; margin-top: 0.6rem; }
+}
+
+@keyframes fade-in-scale-keys{
+  0% { scale: 0.95; opacity: 0; }
+  100% { scale: 1.0; opacity: 1; }
+}
+
+@keyframes fade-out-scale-keys{
+  0% { scale: 1.0; opacity: 1; }
+  100% { scale: 0.95; opacity: 0; }
+}
+
+@keyframes fade-in-keys{
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out-keys{
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+```
+
