@@ -2,6 +2,7 @@ defmodule LiveUiKit do
   @moduledoc File.read!("README.md") |> String.split("<!-- MDOC !-->") |> Enum.fetch!(1)
 
   @before_compile LiveUiKit.ClassLoader
+
   @themes [:tailwind, :bootstrap, :daisyui]
 
   defmacro __using__(_opts) do
@@ -16,6 +17,7 @@ defmodule LiveUiKit do
       import UI.Card
       import UI.Collapse
       import UI.Dropdown
+      import UI.Icon
       import UI.Modal
       import UI.Table
       import UI.Tabs
