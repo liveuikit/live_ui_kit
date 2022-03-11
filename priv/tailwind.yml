@@ -89,4 +89,25 @@ modal_body:
   base: "relative flex-auto p-4"
 
 modal_footer:
-  base:
+  base: ""
+
+table:
+  base: "w-full overflow-hidden rounded-lg shadow leading-normal"
+
+table_wrapper:
+  base: "px-2 py-2 -mx-2 overflow-x-auto"
+
+th:
+  base: "px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+
+thead:
+  base: ""
+
+tbody:
+  base: ""
+
+tr:
+  base: ""
+
+td:
+  base: "px-5 py-5 text-sm bg-white border-b border-gray-200"

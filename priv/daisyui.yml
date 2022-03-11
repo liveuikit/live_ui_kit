@@ -88,3 +88,24 @@ modal_body:
 
 modal_footer:
   base:
+
+table:
+  base: "table w-full"
+
+table_wrapper:
+  base: "overflow-x-auto rounded shadow boder border-base-200"
+
+th:
+  base: ""
+
+thead:
+  base: ""
+
+tbody:
+  base: ""
+
+tr:
+  base: ""
+
+td:
+  base: ""
