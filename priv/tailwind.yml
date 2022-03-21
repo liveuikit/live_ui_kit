@@ -54,6 +54,9 @@ collapse:
 
 dropdown:
   base: "relative inline-block text-left"
+  left: "absolute left-0 z-20 hidden"
+  center: "absolute right-0 z-20 hidden"
+  right: "absolute right-0 z-20 hidden"
 
 dropdown_toggle:
   base: "flex items-center"
@@ -90,6 +93,15 @@ modal_body:
 
 modal_footer:
   base: ""
+
+spinner:
+  base: "w-4 h-4 text-primary animate-spin"
+  primary: "text-purple-500"
+  secondary: ""
+  info: "text-info"
+  success: "text-success"
+  warning: "text-warning"
+  error: "text-danger"
 
 table:
   base: "w-full overflow-hidden rounded-lg shadow leading-normal"

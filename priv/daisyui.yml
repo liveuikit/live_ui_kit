@@ -89,6 +89,13 @@ modal_body:
 modal_footer:
   base:
 
+spinner:
+  base: "w-4 h-4 text-primary animate-spin"
+  info: "text-info"
+  success: "text-success"
+  warning: "text-warning"
+  error: "text-danger"
+
 table:
   base: "table w-full"
 

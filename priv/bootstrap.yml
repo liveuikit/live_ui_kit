@@ -91,6 +91,13 @@ modal_body:
 modal_footer:
   base:
 
+spinner:
+  base: "spinner-border"
+  info: "text-info"
+  success: "text-success"
+  warning: "text-warning"
+  error: "text-danger"
+
 table:
   base: "table"
 
