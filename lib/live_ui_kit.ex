@@ -25,8 +25,7 @@ defmodule LiveUiKit do
     end
   end
 
-  import Phoenix.LiveView, only: [assign: 3, assign_new: 3]
-  import Phoenix.LiveView.Helpers, only: [assigns_to_attributes: 2]
+  import Phoenix.Component, only: [assign: 3, assign_new: 3, assigns_to_attributes: 2]
 
   @doc false
   def config(assigns, opts \\ []) do
