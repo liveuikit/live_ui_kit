@@ -34,7 +34,7 @@ defmodule LiveUiKit.MixProject do
   defp deps do
     [
       # {:phoenix, ">= 1.6.0 and < 1.7.0"},
-      {:phoenix_live_view, ">= 0.17.0 and < 0.20.0"},
+      {:phoenix_live_view, ">= 0.18.0 and < 0.20.0"},
       {:phoenix_html, ">= 3.1.0 and < 4.0.0"},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:yaml_elixir, "~> 2.8"},
